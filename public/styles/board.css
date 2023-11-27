@@ -1,0 +1,24 @@
+.table-container th:nth-child(1){ width: 50px}
+.table-container th:nth-child(2){ width: 90px}
+.table-container th:nth-child(5){ width: 50px}
+
+.pagination-container{
+  display: flex;
+  height: 50px; 
+  align-items: center;
+  gap: 10px; 
+}
+.pagination{
+  display: flex; gap: 3px;
+}
+.pagination li{
+    padding: 10px 20px; 
+    border:1px solid black; 
+    border-radius: 4px;
+    background-color: white;
+    color:black; 
+}
+.pagination li.active{
+   background-color: black;
+   color:white; 
+}

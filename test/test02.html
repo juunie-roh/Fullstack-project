@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validation</title>
+
+</head>
+
+<body>
+
+  <div>
+    test(): includes()처럼, 패턴에 맞는 값을 찾아서 true, false return
+    <br>
+    exec(): 패턴에 맞는 첫 번째 결과 return
+    <br>
+    match(): exec()와 동일 but /g 태그 추가하면 모든 결과 return
+    <br>
+    replace(): 공백 등을 제거 및 변경
+  </div>
+  
+</body>
+
+<script>
+
+  const str = 'Hi there, Nice to meet you. hi';
+
+  let result = /youhi/.test( str );
+  console.log( "/youhi/.test( str ):\n",result );
+
+  result = /hi/.exec( str );
+  console.log( "/hi/.exec( str ):\n", result );
+  result = /ha/.exec( str );
+  console.log( "/ha/.exec( str ):\n", result );
+  result = /hi/ig.exec( str );
+  console.log( "/hi/ig.exec( str ):\n", result );
+
+  result = str.match(/hi/);
+  console.log( "str.match(/hi/ig):\n", result );
+  result = str.match(/hi/ig);
+  console.log( "str.match(/hi/ig):\n", result );
+
+  const tel1 = '010-456-789';
+  const tel2 = '010-1456-9789';
+
+  const isPhoneNum = /\d{3}-\d{4}-\d{4}/;
+  // console.log( "regExpPattern1:", regExpPattern1 );
+  result = isPhoneNum.test(tel1);
+  console.log( "regExpPattern1.test( tel1 ):\n", result );
+  result = isPhoneNum.test(tel2);
+  console.log( "regExpPattern1.test( tel2 ):\n", result );
+
+  const targetUrl1 = "https://youtu.be/uuxUe_Nbnmo";
+  const targetUrl2 = "https://youtu.be/uuxUe_Nbnmo.com";
+  const endsWith_com = /com$/;
+  result = endsWith_com.test( targetUrl1 );
+  console.log( targetUrl1, "endsWith_com.test( targetUrl1 ):\n", result );
+  result = endsWith_com.test( targetUrl2 );
+  console.log( targetUrl2, "endsWith_com.test( targetUrl2 ):\n", result );
+
+  const has_https = /https?/;
+  const has_http_https = /(http|https)?:\/\//;
+  console.log( targetUrl2, "has_https.test( targetUrl2 ):\n", has_https.test( targetUrl2 ) );
+  console.log( targetUrl2, "has_http_https.test( targetUrl2 ):\n", has_http_https.test( targetUrl2 ) );
+
+  const id = 'jemicom24795';
+  const isValidId = /\w{8,}/;
+  console.log( id, "isValidId.test( id ):\n", isValidId.test( id ) );
+
+  const email = 'jemicom_24795@gmail.com';
+  const isValidEmail = /^[\w.-]{8,}@[\w.-]*\.\w{2,3}/;
+  console.log( email, "isValidEmail.test( email ):\n", isValidEmail.test( email ) );
+
+  const str1 = 'jdje#-230845';
+  const hasSymbols = /\W/ig;
+  console.log( str1, "hasSymbols.test( str1 ):\n", hasSymbols.test( str1 ) );
+  console.log( "str1.replace( hasSymbols ):\n", str1, "=>", str1.replace( hasSymbols, '' ) );
+
+  const str2 = '    jdje        230845';
+  const removeSpaces = /\s+/ig;
+  console.log( "str2.replace( removeSpaces ):\n", str2, "=>", str2.replace( removeSpaces, '' ) );
+
+
+
+</script>
+
+</html>
