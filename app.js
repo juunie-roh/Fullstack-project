@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 app.get('^/$|^/index(.html)?$', (req, res) => { res.sendFile(path.join(__dirname, 'views', 'index.html')); });
 app.get('^/register(.html)?$', (req, res) => { res.sendFile(path.join(__dirname, 'views', 'register.html')); });
 app.get('^/login(.html)?$', (req, res) => { res.sendFile(path.join(__dirname, 'views', 'login.html')); });
-app.get('^/searchid(.html)?$', (req, res) => { res.sendFile(path.join(__dirname, 'views', 'searchid.html')); });
+app.get('^/searchid(.html)?$', (req, res) => { res.sendFile(path.join(__dirname, 'views', 'searchId.html')); });
 app.get('^/searchpwd(.html)?$', (req, res) => { res.sendFile(path.join(__dirname, 'views', 'searchPwd.html')); });
 
 const users = [
