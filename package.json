@@ -13,5 +13,8 @@
     "@nestjs/core": "^10.2.10",
     "express": "^4.18.2",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.5"
   }
 }
