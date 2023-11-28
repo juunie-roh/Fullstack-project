@@ -6,6 +6,8 @@ Used:
 - express@4.18.2
 - path@0.12.7
 - AWS EC2 (Free Tier)
+- Tailwindcss
+- prettier
 
 서버 배포 시험 프로젝트로, `GET` 요청에 대해서만 구현되어있는 간단한 서버 및 클라이언트 입니다.
 
