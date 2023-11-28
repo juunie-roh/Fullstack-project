@@ -1,146 +1,166 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <!-- <link rel="stylesheet" href="../public/styles/register.css"> -->
+    <link rel="stylesheet" href="/styles/register.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원가입</title>
-  <!-- <link rel="stylesheet" href="../public/styles/register.css"> -->
-  <link rel="stylesheet" href="/styles/register.css">
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
-</head>
+  <body>
+    <div class="register-container">
+      <h1>다음을 입력해주세요.</h1>
 
-<body>
+      <div class="register-box">
+        <form class="name-form">
+          <label for="userName">이름</label>
+          <input
+            type="text"
+            id="userName"
+            placeholder="2글자이상 문자로 입력하세요."
+            required
+            autocomplete="off"
+          />
+          <p id="userNameErr">이름은 2글자이상 문자로 입력하세요.</p>
+        </form>
+        <form class="userid-form">
+          <label for="userId">userid</label>
+          <input
+            type="text"
+            id="userId"
+            placeholder="5글자이상 영문자로 입력하세요."
+            required
+            autocomplete="off"
+          />
+          <p id="userIdErr">이름은 5글자이상 문자로 입력하세요.</p>
+        </form>
+        <form class="useremail-form">
+          <label for="userEmail">Email</label>
+          <input
+            type="text"
+            id="userEmail"
+            placeholder="userid@naver.com"
+            required
+            autocomplete="off"
+          />
+          <p id="userEmailErr">userid@naver.com, user.id@naver.co.ko</p>
+        </form>
+        <form class="useremail-form">
+          <label for="userPhone">전화번호</label>
+          <input type="text" id="userPhone" placeholder="(022)4564-4567" />
+          <p id="userPhoneErr">(022)4564-4567, 022-4564-4567, 022 4564 4567</p>
+        </form>
+        <form class="password-form">
+          <label for="userPwd">비밀번호</label>
+          <input
+            type="password"
+            id="userPwd"
+            placeholder="문자,숫자,특수문자를 포함한 8자리"
+            required
+          />
+          <p id="userPwdErr">TESTtest1234$ 특수문자[!, $, %]</p>
+        </form>
+        <form class="rePassword-form">
+          <label for="userRepwd">비밀번호확인</label>
+          <input
+            type="password"
+            id="userRepwd"
+            placeholder="이전에 입력한 비밀번호를 한번 더 입력해주세요"
+          />
+          <p id="userRepwdErr">이전에 입력한 비밀번호와 같지 않습니다.</p>
+        </form>
 
-  <div class="register-container">
-
-    <h1>다음을 입력해주세요.</h1>
-
-    <div class="register-box">
-
-      <form class="name-form">
-        <label for="userName">이름</label>
-        <input type="text" id="userName" placeholder="2글자이상 문자로 입력하세요." required autocomplete="off">
-        <p id="userNameErr">이름은 2글자이상 문자로 입력하세요.</p>
-      </form>
-      <form class="userid-form">
-        <label for="userId">userid</label>
-        <input type="text" id="userId" placeholder="5글자이상 영문자로 입력하세요." required autocomplete="off">
-        <p id="userIdErr">이름은 5글자이상 문자로 입력하세요.</p>
-      </form>
-      <form class="useremail-form">
-        <label for="userEmail">Email</label>
-        <input type="text" id="userEmail" placeholder="userid@naver.com" required autocomplete="off">
-        <p id="userEmailErr">userid@naver.com, user.id@naver.co.ko</p>
-      </form>
-      <form class="useremail-form">
-        <label for="userPhone">전화번호</label>
-        <input type="text" id="userPhone" placeholder="(022)4564-4567">
-        <p id="userPhoneErr">(022)4564-4567, 022-4564-4567, 022 4564 4567</p>
-      </form>
-      <form class="password-form">
-        <label for="userPwd">비밀번호</label>
-        <input type="password" id="userPwd" placeholder="문자,숫자,특수문자를 포함한 8자리" required>
-        <p id="userPwdErr">TESTtest1234$ 특수문자[!, $, %]</p>
-      </form>
-      <form class="rePassword-form">
-        <label for="userRepwd">비밀번호확인</label>
-        <input type="password" id="userRepwd" placeholder="이전에 입력한 비밀번호를 한번 더 입력해주세요">
-        <p id="userRepwdErr">이전에 입력한 비밀번호와 같지 않습니다.</p>
-      </form>
-
-      <div>
-
-        <button id="submitBtn">회원가입</button>
-        <button id="resetBtn">취소</button>
-        <!-- <input type="submit" value="회원가입"> <input type="reset" value="회원가입">-->
+        <div>
+          <button id="submitBtn">회원가입</button>
+          <button id="resetBtn">취소</button>
+          <!-- <input type="submit" value="회원가입"> <input type="reset" value="회원가입">-->
+        </div>
       </div>
-
     </div>
 
-  </div>
+    <script>
+      const registerUrlPOST = "http://localhost:3000/register";
 
-  <script>
+      function isValid(event, regexp) {
+        const input = event.target;
+        const isValid = regexp.test(input.value);
 
-    const registerUrlPOST = "http://localhost:3000/register";
-
-    function isValid( event, regexp ) {
-
-      const input = event.target;
-      const isValid = regexp.test( input.value );
-
-      if ( !isValid && input.value ) {
-        input.classList.add( 'invalid' );
-        input.classList.remove( 'valid' );
-        // userNameErr.classList.add( 'error' );
-        input.nextElementSibling.classList.add( 'error' );
-      } else {
-        input.classList.remove( 'invalid' );
-        input.classList.add( 'valid' );
-        // userNameErr.classList.remove( 'error' );
-        input.nextElementSibling.classList.remove( 'error' );
-      }
-
-    }
-    const userNameRegex = /^[가-힣a-zA-Z]{2,}$/;
-    userName.addEventListener( 'input', ( event ) => isValid( event, userNameRegex ) );
-    const userIdRegex = /^\w{5,12}$/;
-    userId.addEventListener( 'input', ( event ) => isValid( event, userIdRegex ) );
-    const userEmailRegex = /^([\w.]{5,12})@(\w+\.\w+\.?\w*)$/;
-    userEmail.addEventListener( 'input', ( event ) => isValid( event, userEmailRegex ) );
-    const userPhoneRegex = /^\(?\d{2,3}\)?[-.\s]?\d{3,4}[-.\s]?\d{4}$/;
-    userPhone.addEventListener( 'input', ( event ) => isValid( event, userPhoneRegex ) );
-    const userPwdRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+?])[A-Za-z\d!@#$%^&*()-_=+?]{8,}$/;
-    userPwd.addEventListener( 'input', ( event ) => isValid( event, userPwdRegex ) );
-    userRepwd.addEventListener( 'input', ( event ) => {
-
-      const pwd = document.querySelector( '#userPwd' );
-      const input = event.target;
-
-      if ( input.value !== pwd.value ) {
-        input.classList.add( 'invalid' );
-        input.classList.remove( 'valid' );
-        // userNameErr.classList.add( 'error' );
-        input.nextElementSibling.classList.add( 'error' );
-      } else {
-        input.classList.remove( 'invalid' );
-        input.classList.add( 'valid' );
-        // userNameErr.classList.remove( 'error' );
-        input.nextElementSibling.classList.remove( 'error' );
-      }
-
-    } );
-
-    submitBtn.addEventListener( 'click', () => {
-
-      const user = {
-        userName: userName.value,
-        userId: userId.value,
-        userEmail: userEmail.value,
-        userPhone: userPhone.value,
-        userPwd: userPwd.value,
-      }
-
-      console.log( JSON.stringify( user ) );
-      fetch( registerUrlPOST, {
-        method: 'POST',
-        body: JSON.stringify( user ),
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-          "authorization": ""
+        if (!isValid && input.value) {
+          input.classList.add("invalid");
+          input.classList.remove("valid");
+          // userNameErr.classList.add( 'error' );
+          input.nextElementSibling.classList.add("error");
+        } else {
+          input.classList.remove("invalid");
+          input.classList.add("valid");
+          // userNameErr.classList.remove( 'error' );
+          input.nextElementSibling.classList.remove("error");
         }
-      } )
-      .then( res => res.json() )
-      .then( res => { 
-          console.log( res ); 
-          window.location.href = 'http://localhost:3000/login';
-        } );
-    } );
+      }
+      const userNameRegex = /^[가-힣a-zA-Z]{2,}$/;
+      userName.addEventListener("input", (event) =>
+        isValid(event, userNameRegex),
+      );
+      const userIdRegex = /^\w{5,12}$/;
+      userId.addEventListener("input", (event) => isValid(event, userIdRegex));
+      const userEmailRegex = /^([\w.]{5,12})@(\w+\.\w+\.?\w*)$/;
+      userEmail.addEventListener("input", (event) =>
+        isValid(event, userEmailRegex),
+      );
+      const userPhoneRegex = /^\(?\d{2,3}\)?[-.\s]?\d{3,4}[-.\s]?\d{4}$/;
+      userPhone.addEventListener("input", (event) =>
+        isValid(event, userPhoneRegex),
+      );
+      const userPwdRegex =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+?])[A-Za-z\d!@#$%^&*()-_=+?]{8,}$/;
+      userPwd.addEventListener("input", (event) =>
+        isValid(event, userPwdRegex),
+      );
+      userRepwd.addEventListener("input", (event) => {
+        const pwd = document.querySelector("#userPwd");
+        const input = event.target;
 
-  </script>
+        if (input.value !== pwd.value) {
+          input.classList.add("invalid");
+          input.classList.remove("valid");
+          // userNameErr.classList.add( 'error' );
+          input.nextElementSibling.classList.add("error");
+        } else {
+          input.classList.remove("invalid");
+          input.classList.add("valid");
+          // userNameErr.classList.remove( 'error' );
+          input.nextElementSibling.classList.remove("error");
+        }
+      });
 
-</body>
+      submitBtn.addEventListener("click", () => {
+        const user = {
+          userName: userName.value,
+          userId: userId.value,
+          userEmail: userEmail.value,
+          userPhone: userPhone.value,
+          userPwd: userPwd.value,
+        };
 
+        console.log(JSON.stringify(user));
+        fetch(registerUrlPOST, {
+          method: "POST",
+          body: JSON.stringify(user),
+          headers: {
+            "Content-Type": "application/json;charset=utf-8",
+            authorization: "",
+          },
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res);
+            window.location.href = "http://localhost:3000/login";
+          });
+      });
+    </script>
+  </body>
 </html>

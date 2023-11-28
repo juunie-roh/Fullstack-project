@@ -1,14 +1,14 @@
 const listFn = (filelist) => {
-  let list = '<ul';
-  filelist.forEach(file => {
-    list += `<li>${file}<li>`
+  let list = "<ul";
+  filelist.forEach((file) => {
+    list += `<li>${file}<li>`;
   });
-  list += '</ul>';
+  list += "</ul>";
 
   return list;
-}
+};
 
-const htmlPage = (title, list, body, control)=>{
+const htmlPage = (title, list, body, control) => {
   return `
       <!DOCTYPE html>
       <html lang="en">
@@ -25,8 +25,7 @@ const htmlPage = (title, list, body, control)=>{
           ${body}
       </body>
       </html>
-  `
-}
+  `;
+};
 
-
-module.exports = { htmlPage, listFn }
+module.exports = { htmlPage, listFn };

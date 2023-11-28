@@ -1,52 +1,62 @@
-*{
+* {
   margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
 }
 html,
-body{
+body {
   scroll-behavior: smooth;
   /* js없이 부드러운 이동 */
 }
-a{ color: inherit; }
-
-header.active{
-   position: fixed; top:0;
-   width:100%;
-   background-color: black;
-   color:white;
+a {
+  color: inherit;
 }
 
-.lnb ul{
+header.active {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.lnb ul {
   display: flex;
 }
-.lnb a{ display: block; padding: 20px 30px;}
+.lnb a {
+  display: block;
+  padding: 20px 30px;
+}
 
-.main_banner{ 
+.main_banner {
   position: relative;
   height: 350px;
 }
-.main_banner>div{ 
+.main_banner > div {
   position: absolute;
 }
 
-section{
+section {
   height: 900px;
 }
-#section01{
+#section01 {
   background-color: pink;
 }
-#section02{
+#section02 {
   background-color: lightgoldenrodyellow;
 }
-.btns{ display: flex;}
-.btns li{ padding: 10px; }
-.contents>div{ height: 300px;
+.btns {
+  display: flex;
+}
+.btns li {
+  padding: 10px;
+}
+.contents > div {
+  height: 300px;
   background-color: antiquewhite;
 }
 
-#section03{
+#section03 {
   background-color: skyblue;
 }
-
