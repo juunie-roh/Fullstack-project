@@ -14,4 +14,5 @@ Used:
 http://52.78.227.153:3000/  
 http://52.78.227.153:3000/login
 
-현재는 위 두 페이지에 접속 가능합니다 (2023.11.28)
+현재는 위 두 페이지에 접속 가능합니다 (2023.11.28)   
+(Sources from Korea IT Academy Frontend Class)
